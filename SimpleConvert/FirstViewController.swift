@@ -20,6 +20,12 @@ class FirstViewController: UIViewController {
         let defaultItem = ConvertHandler.convertToDefault(testItemToConvert);
         
         print(defaultItem.value);
+        
+        let cmItem = ConvertItem(withUnit: Constants.Units.CentMeter, value: 0);
+        
+        ConvertHandler.convert(fromDefault: defaultItem, convertingItem: cmItem);
+        
+        print (cmItem.value);
     }
 
     override func didReceiveMemoryWarning() {
