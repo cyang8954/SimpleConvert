@@ -10,7 +10,7 @@ import UIKit
 
 class ConvertHandler: NSObject {
     
-    class func convertToDefault(itemToConvert:ConvertItem) -> ConvertItem {
+    class func convertToDefault(_ itemToConvert:ConvertItem) -> ConvertItem {
         //find itemToConvert's default unit
         let type = itemToConvert.type!
         let defaultUnit = Mapping.defaultUnitsFromType[type]!
