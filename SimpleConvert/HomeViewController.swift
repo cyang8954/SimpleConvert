@@ -8,9 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UITableViewController {
+class HomeViewController: SCTableViewController {
     
-    let CellID = "typeCell"
+    let TypeCellID = "typeCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,10 @@ class HomeViewController: UITableViewController {
         
         print (cmItem.value!)
         
-        self.tableView.tableFooterView = UIView()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.title = "Choose a type"
+        
+        self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: TypeCellID)
+        
     }
     
     
@@ -47,7 +45,7 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TypeCellID, for: indexPath)
         
         let allTypeArray = Array(Mapping.unitsInType.keys)
     
@@ -57,9 +55,28 @@ class HomeViewController: UITableViewController {
 
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 76
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let allTypeArray = Array(Mapping.unitsInType.keys)
+        
+        let typeSelected = allTypeArray[indexPath.row]
+        
+        let convertingViewController = ConvertingViewController()
+        
+        convertingViewController.type = typeSelected
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Home"
+        self.navigationItem.backBarButtonItem = backItem
+        
+        self.navigationController?.pushViewController(convertingViewController, animated: true)
+        
+    }
+    
 
 }
 

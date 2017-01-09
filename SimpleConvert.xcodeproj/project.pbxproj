@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		885CC2AE1E24179A00681C05 /* ConvertingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2AD1E24179A00681C05 /* ConvertingViewController.swift */; };
+		885CC2B11E241CBC00681C05 /* SCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B01E241CBC00681C05 /* SCViewController.swift */; };
+		885CC2B31E241CD100681C05 /* SCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B21E241CD100681C05 /* SCTableViewController.swift */; };
 		B80146751E22A14500C8B816 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146741E22A14500C8B816 /* AppDelegate.swift */; };
 		B80146771E22A14500C8B816 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146761E22A14500C8B816 /* HomeViewController.swift */; };
 		B80146791E22A14500C8B816 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146781E22A14500C8B816 /* CurrencyViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		885CC2AD1E24179A00681C05 /* ConvertingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertingViewController.swift; sourceTree = "<group>"; };
+		885CC2B01E241CBC00681C05 /* SCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCViewController.swift; sourceTree = "<group>"; };
+		885CC2B21E241CD100681C05 /* SCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCTableViewController.swift; sourceTree = "<group>"; };
 		B80146711E22A14500C8B816 /* SimpleConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80146741E22A14500C8B816 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B80146761E22A14500C8B816 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		885CC2AC1E24174F00681C05 /* ConvertingFlow */ = {
+			isa = PBXGroup;
+			children = (
+				885CC2AD1E24179A00681C05 /* ConvertingViewController.swift */,
+			);
+			path = ConvertingFlow;
+			sourceTree = "<group>";
+		};
+		885CC2AF1E241C9E00681C05 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				885CC2B01E241CBC00681C05 /* SCViewController.swift */,
+				885CC2B21E241CD100681C05 /* SCTableViewController.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
 		B80146681E22A14400C8B816 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +89,8 @@
 		B80146731E22A14500C8B816 /* SimpleConvert */ = {
 			isa = PBXGroup;
 			children = (
+				885CC2AF1E241C9E00681C05 /* BaseClasses */,
+				885CC2AC1E24174F00681C05 /* ConvertingFlow */,
 				B801468F1E22AA5700C8B816 /* Utilities */,
 				B80146881E22A16D00C8B816 /* Models */,
 				B80146741E22A14500C8B816 /* AppDelegate.swift */,
@@ -176,9 +201,12 @@
 				B801468C1E22A37500C8B816 /* ConvertHandler.swift in Sources */,
 				B80146791E22A14500C8B816 /* CurrencyViewController.swift in Sources */,
 				B80146951E230E9B00C8B816 /* Mapping.swift in Sources */,
+				885CC2AE1E24179A00681C05 /* ConvertingViewController.swift in Sources */,
+				885CC2B11E241CBC00681C05 /* SCViewController.swift in Sources */,
 				B80146751E22A14500C8B816 /* AppDelegate.swift in Sources */,
 				B80146771E22A14500C8B816 /* HomeViewController.swift in Sources */,
 				B80146911E22AA7B00C8B816 /* Constants.swift in Sources */,
+				885CC2B31E241CD100681C05 /* SCTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
