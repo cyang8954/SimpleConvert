@@ -24,7 +24,9 @@ class ConvertHandler: NSObject {
         return defaultItem
     }
     
-    class func convert(fromDefault defaultItem:ConvertItem, convertingItem:ConvertItem)  {
+    class func convert(fromItem item:ConvertItem, convertingItem:ConvertItem)  {
+        
+        let defaultItem = self.convertToDefault(item)
         
         let unit = convertingItem.unit!
         let defaultValue = defaultItem.value!

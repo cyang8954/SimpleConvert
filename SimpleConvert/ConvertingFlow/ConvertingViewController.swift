@@ -9,29 +9,37 @@
 import UIKit
 
 let ConvertCellID = "convertCell"
+let ConvertingHeaderID = "headerID"
 
 class ConvertingViewController: SCTableViewController {
     
     var type:String?
+    var convertingItem:ConvertItem?
+    
     var allUnitsInType:Array<String>?
     var unitListToShow:Array<String>?
     
-    var convertingItemList:Array<ConvertItem>?
+    var convertedItemList:Array<ConvertItem>?
+
     
     override func loadView() {
         super.loadView()
         
         self.title = self.type
+        
+        self.convertingItem = ConvertItem(withUnit: Mapping.defaultUnitsFromType[self.type!]!, value: 0)
+        
+        
         self.allUnitsInType = Mapping.unitsInType[type!]
         
         self.unitListToShow = Utility.getDefaultUnitList(forType: self.type!)
         
-        self.convertingItemList = Array();
+        self.convertedItemList = Array();
         
         for unit in self.unitListToShow! {
             
             let convertItem = ConvertItem(withUnit: unit, value: 0)
-            self.convertingItemList?.append(convertItem)
+            self.convertedItemList?.append(convertItem)
         }
     
         
@@ -41,6 +49,8 @@ class ConvertingViewController: SCTableViewController {
         super.viewDidLoad()
         
         self.tableView.register(ConvertingTableViewCell.classForCoder(), forCellReuseIdentifier: ConvertCellID)
+        self.tableView.register(ConvertingTextFieldHeader.classForCoder(), forHeaderFooterViewReuseIdentifier: ConvertingHeaderID)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +69,7 @@ class ConvertingViewController: SCTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConvertCellID, for: indexPath) as! ConvertingTableViewCell
         
-        let convertItem = self.convertingItemList?[indexPath.row]
+        let convertItem = self.convertedItemList?[indexPath.row]
         
         cell.update(withConvertItem: convertItem!)
 
@@ -70,6 +80,13 @@ class ConvertingViewController: SCTableViewController {
         return 76
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let convertingHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: ConvertingHeaderID)
+    
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
