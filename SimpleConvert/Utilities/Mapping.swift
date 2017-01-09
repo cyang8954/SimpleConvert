@@ -33,4 +33,38 @@ class Mapping: NSObject {
     
     ]
     
+    static let defaultUnitsFromType = [
+        Constants.Types.Distance:Constants.Units.Meter,
+        
+        ]
+    
+    static let unitsInType = [
+        
+        Constants.Types.Distance:[
+            Constants.Units.Meter,
+            Constants.Units.CentMeter,
+            Constants.Units.Foot
+        ],
+        
+        ]
+    
+    static let unitsNameToShow = [
+        Constants.Units.Meter:Constants.UnitNameToShow.Meter,
+        Constants.Units.CentMeter:Constants.UnitNameToShow.CentMeter,
+        Constants.Units.Foot:Constants.UnitNameToShow.Foot
+    ]
+    
+    static let unitsNameToShowShort = [
+        Constants.Units.Meter:Constants.UnitNameToShowShort.Meter,
+        Constants.Units.CentMeter:Constants.UnitNameToShowShort.CentMeter,
+        Constants.Units.Foot:Constants.UnitNameToShowShort.Foot
+    ]
+    
+    static let unitsNameToShowChinese = [
+        Constants.Units.Meter:Constants.UnitNameToShowChinese.Meter,
+        Constants.Units.CentMeter:Constants.UnitNameToShowChinese.CentMeter,
+        Constants.Units.Foot:Constants.UnitNameToShowChinese.Foot
+    ]
+    
+    
 }
