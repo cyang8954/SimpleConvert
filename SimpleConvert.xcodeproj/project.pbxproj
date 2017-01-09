@@ -10,6 +10,10 @@
 		885CC2AE1E24179A00681C05 /* ConvertingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2AD1E24179A00681C05 /* ConvertingViewController.swift */; };
 		885CC2B11E241CBC00681C05 /* SCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B01E241CBC00681C05 /* SCViewController.swift */; };
 		885CC2B31E241CD100681C05 /* SCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B21E241CD100681C05 /* SCTableViewController.swift */; };
+		885CC2B51E24229E00681C05 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B41E24229E00681C05 /* Utility.swift */; };
+		885CC2B71E24317700681C05 /* ConvertingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B61E24317700681C05 /* ConvertingTableViewCell.swift */; };
+		885CC2B91E243E2F00681C05 /* ConvertingTextFieldHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2B81E243E2F00681C05 /* ConvertingTextFieldHeader.swift */; };
+		885CC2BC1E243F9F00681C05 /* ConvertingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885CC2BB1E243F9F00681C05 /* ConvertingTextField.swift */; };
 		B80146751E22A14500C8B816 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146741E22A14500C8B816 /* AppDelegate.swift */; };
 		B80146771E22A14500C8B816 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146761E22A14500C8B816 /* HomeViewController.swift */; };
 		B80146791E22A14500C8B816 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146781E22A14500C8B816 /* CurrencyViewController.swift */; };
@@ -27,6 +31,10 @@
 		885CC2AD1E24179A00681C05 /* ConvertingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertingViewController.swift; sourceTree = "<group>"; };
 		885CC2B01E241CBC00681C05 /* SCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCViewController.swift; sourceTree = "<group>"; };
 		885CC2B21E241CD100681C05 /* SCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCTableViewController.swift; sourceTree = "<group>"; };
+		885CC2B41E24229E00681C05 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		885CC2B61E24317700681C05 /* ConvertingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertingTableViewCell.swift; sourceTree = "<group>"; };
+		885CC2B81E243E2F00681C05 /* ConvertingTextFieldHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertingTextFieldHeader.swift; sourceTree = "<group>"; };
+		885CC2BB1E243F9F00681C05 /* ConvertingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertingTextField.swift; sourceTree = "<group>"; };
 		B80146711E22A14500C8B816 /* SimpleConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80146741E22A14500C8B816 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B80146761E22A14500C8B816 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				885CC2AD1E24179A00681C05 /* ConvertingViewController.swift */,
+				885CC2B61E24317700681C05 /* ConvertingTableViewCell.swift */,
+				885CC2B81E243E2F00681C05 /* ConvertingTextFieldHeader.swift */,
 			);
 			path = ConvertingFlow;
 			sourceTree = "<group>";
@@ -68,6 +78,14 @@
 				885CC2B21E241CD100681C05 /* SCTableViewController.swift */,
 			);
 			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		885CC2BA1E243F7900681C05 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				885CC2BB1E243F9F00681C05 /* ConvertingTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B80146681E22A14400C8B816 = {
@@ -89,6 +107,7 @@
 		B80146731E22A14500C8B816 /* SimpleConvert */ = {
 			isa = PBXGroup;
 			children = (
+				885CC2BA1E243F7900681C05 /* Views */,
 				885CC2AF1E241C9E00681C05 /* BaseClasses */,
 				885CC2AC1E24174F00681C05 /* ConvertingFlow */,
 				B801468F1E22AA5700C8B816 /* Utilities */,
@@ -119,6 +138,7 @@
 				B80146901E22AA7B00C8B816 /* Constants.swift */,
 				B80146921E22ACD200C8B816 /* Formula.swift */,
 				B80146941E230E9B00C8B816 /* Mapping.swift */,
+				885CC2B41E24229E00681C05 /* Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -204,7 +224,11 @@
 				885CC2AE1E24179A00681C05 /* ConvertingViewController.swift in Sources */,
 				885CC2B11E241CBC00681C05 /* SCViewController.swift in Sources */,
 				B80146751E22A14500C8B816 /* AppDelegate.swift in Sources */,
+				885CC2BC1E243F9F00681C05 /* ConvertingTextField.swift in Sources */,
+				885CC2B51E24229E00681C05 /* Utility.swift in Sources */,
+				885CC2B91E243E2F00681C05 /* ConvertingTextFieldHeader.swift in Sources */,
 				B80146771E22A14500C8B816 /* HomeViewController.swift in Sources */,
+				885CC2B71E24317700681C05 /* ConvertingTableViewCell.swift in Sources */,
 				B80146911E22AA7B00C8B816 /* Constants.swift in Sources */,
 				885CC2B31E241CD100681C05 /* SCTableViewController.swift in Sources */,
 			);

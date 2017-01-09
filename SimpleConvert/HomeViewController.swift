@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: SCTableViewController {
     
     let TypeCellID = "typeCell"
+    let HeaderID = "headerID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,10 @@ class HomeViewController: SCTableViewController {
         
         print (cmItem.value!)
         
-        self.title = "Choose a type"
+        self.title = "Home"
         
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: TypeCellID)
+        self.tableView.register(UITableViewHeaderFooterView.classForCoder(), forHeaderFooterViewReuseIdentifier: HeaderID)
         
     }
     
@@ -69,14 +71,24 @@ class HomeViewController: SCTableViewController {
         
         convertingViewController.type = typeSelected
         
-        let backItem = UIBarButtonItem()
-        backItem.title = "Home"
-        self.navigationItem.backBarButtonItem = backItem
-        
         self.navigationController?.pushViewController(convertingViewController, animated: true)
         
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let tableViewHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderID)
+        
+        tableViewHeader?.textLabel?.text = "Choose a type"
+        
+        return tableViewHeader
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 50;
+    }
 
 }
 

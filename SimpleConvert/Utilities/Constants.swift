@@ -14,6 +14,7 @@ class Constants {
         static let UnitNameToShow = "unitNameToShow"
         static let UnitNameToShowShort = "unitNameToShowShort"
         static let UnitNameToShowChinese = "unitNameToShowChinese"
+        static let UnitDefault = "unitDefault"
     }
     
     struct Types {

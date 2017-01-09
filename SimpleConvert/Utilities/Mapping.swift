@@ -59,6 +59,7 @@ class Mapping: NSObject {
         Constants.Types.Area:Constants.Units.SquareMeter,
     ]
     
+    //all the units in a type
     static let unitsInType = [
         
         Constants.Types.Distance:[
@@ -75,6 +76,22 @@ class Mapping: NSObject {
         
     ]
     
+    //default units in a type that showing when launch the fisrt time
+    static let defaultUnitsInType = [
+        
+        Constants.Types.Distance:[
+            Constants.Units.Meter,
+            Constants.Units.CentiMeter,
+            Constants.Units.Foot
+        ],
+        
+        Constants.Types.Area:[
+            Constants.Units.SquareMeter,
+            Constants.Units.SquareFoot,
+            Constants.Units.Acre
+        ]
+        
+    ]
 
     
 }

@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ConvertingViewController: SCTableViewController {
+let ConvertCellID = "convertCell"
 
+class ConvertingViewController: SCTableViewController {
+    
     var type:String?
     var allUnitsInType:Array<String>?
+    var unitListToShow:Array<String>?
+    
+    var convertingItemList:Array<ConvertItem>?
     
     override func loadView() {
         super.loadView()
@@ -19,11 +24,23 @@ class ConvertingViewController: SCTableViewController {
         self.title = self.type
         self.allUnitsInType = Mapping.unitsInType[type!]
         
+        self.unitListToShow = Utility.getDefaultUnitList(forType: self.type!)
+        
+        self.convertingItemList = Array();
+        
+        for unit in self.unitListToShow! {
+            
+            let convertItem = ConvertItem(withUnit: unit, value: 0)
+            self.convertingItemList?.append(convertItem)
+        }
+    
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.tableView.register(ConvertingTableViewCell.classForCoder(), forCellReuseIdentifier: ConvertCellID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,18 +52,23 @@ class ConvertingViewController: SCTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (self.allUnitsInType?.count)!
+        return (self.unitListToShow?.count)!
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConvertCellID, for: indexPath) as! ConvertingTableViewCell
+        
+        let convertItem = self.convertingItemList?[indexPath.row]
+        
+        cell.update(withConvertItem: convertItem!)
 
         return cell
     }
-    */
+ 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 76
+    }
 
     /*
     // Override to support conditional editing of the table view.
