@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B80146751E22A14500C8B816 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146741E22A14500C8B816 /* AppDelegate.swift */; };
-		B80146771E22A14500C8B816 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146761E22A14500C8B816 /* FirstViewController.swift */; };
-		B80146791E22A14500C8B816 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146781E22A14500C8B816 /* SecondViewController.swift */; };
+		B80146771E22A14500C8B816 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146761E22A14500C8B816 /* HomeViewController.swift */; };
+		B80146791E22A14500C8B816 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146781E22A14500C8B816 /* CurrencyViewController.swift */; };
 		B801467C1E22A14500C8B816 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B801467A1E22A14500C8B816 /* Main.storyboard */; };
 		B801467E1E22A14500C8B816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B801467D1E22A14500C8B816 /* Assets.xcassets */; };
 		B80146811E22A14500C8B816 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B801467F1E22A14500C8B816 /* LaunchScreen.storyboard */; };
@@ -23,8 +23,8 @@
 /* Begin PBXFileReference section */
 		B80146711E22A14500C8B816 /* SimpleConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80146741E22A14500C8B816 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B80146761E22A14500C8B816 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		B80146781E22A14500C8B816 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		B80146761E22A14500C8B816 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B80146781E22A14500C8B816 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		B801467B1E22A14500C8B816 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B801467D1E22A14500C8B816 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B80146801E22A14500C8B816 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,8 +69,8 @@
 				B801468F1E22AA5700C8B816 /* Utilities */,
 				B80146881E22A16D00C8B816 /* Models */,
 				B80146741E22A14500C8B816 /* AppDelegate.swift */,
-				B80146761E22A14500C8B816 /* FirstViewController.swift */,
-				B80146781E22A14500C8B816 /* SecondViewController.swift */,
+				B80146761E22A14500C8B816 /* HomeViewController.swift */,
+				B80146781E22A14500C8B816 /* CurrencyViewController.swift */,
 				B801467A1E22A14500C8B816 /* Main.storyboard */,
 				B801467D1E22A14500C8B816 /* Assets.xcassets */,
 				B801467F1E22A14500C8B816 /* LaunchScreen.storyboard */,
@@ -172,10 +172,10 @@
 				B801468A1E22A1E000C8B816 /* ConvertItem.swift in Sources */,
 				B80146931E22ACD200C8B816 /* Formula.swift in Sources */,
 				B801468C1E22A37500C8B816 /* ConvertHandler.swift in Sources */,
-				B80146791E22A14500C8B816 /* SecondViewController.swift in Sources */,
+				B80146791E22A14500C8B816 /* CurrencyViewController.swift in Sources */,
 				B80146951E230E9B00C8B816 /* Mapping.swift in Sources */,
 				B80146751E22A14500C8B816 /* AppDelegate.swift in Sources */,
-				B80146771E22A14500C8B816 /* FirstViewController.swift in Sources */,
+				B80146771E22A14500C8B816 /* HomeViewController.swift in Sources */,
 				B80146911E22AA7B00C8B816 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +326,7 @@
 				B80146871E22A14500C8B816 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
