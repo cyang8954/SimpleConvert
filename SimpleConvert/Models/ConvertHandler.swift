@@ -17,7 +17,9 @@ class ConvertHandler: NSObject {
         
         let convertedDefaultValue = itemToConvert.value! * Formula.unitToDefault[itemToConvert.unit!]!
         
-        let defaultItem = ConvertItem(withType: type, unit: defaultUnit, value: convertedDefaultValue, nameToShow: Mapping.unitsNameToShow[defaultUnit]!, nameToShowShort: Mapping.unitsNameToShowShort[defaultUnit]!, nameInChinese: Mapping.unitsNameToShowChinese[defaultUnit]!)
+        let unitMappingForDefaultUnit = Mapping.unitMapping[defaultUnit]!
+        
+        let defaultItem = ConvertItem(withType: type, unit: defaultUnit, value: convertedDefaultValue, nameToShow: unitMappingForDefaultUnit[Constants.Keys.UnitNameToShow]!, nameToShowShort: unitMappingForDefaultUnit[Constants.Keys.UnitNameToShowShort]!, nameInChinese: unitMappingForDefaultUnit[Constants.Keys.UnitNameToShowChinese]!)
         
         return defaultItem
     }

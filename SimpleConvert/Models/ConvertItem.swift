@@ -38,7 +38,7 @@ class ConvertItem: NSObject {
         
         let convertDictionary = Mapping.unitMapping[unit]!
         
-        self.type = convertDictionary[Constants.Keys.Type];
+        self.type = convertDictionary[Constants.Keys.UnitType];
         self.nameToShow = convertDictionary[Constants.Keys.UnitNameToShow]
         self.nameToShowShort = convertDictionary[Constants.Keys.UnitNameToShowShort]
         self.nameInChinese = convertDictionary[Constants.Keys.UnitNameToShowChinese]

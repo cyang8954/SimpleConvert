@@ -16,55 +16,65 @@ class Mapping: NSObject {
             Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.Meter,
             Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.Meter,
             Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.Meter,
-            Constants.Keys.Type:Constants.Types.Distance
+            Constants.Keys.UnitType:Constants.Types.Distance
         ],
-        Constants.Units.CentMeter : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.CentMeter,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.CentMeter,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.CentMeter,
-            Constants.Keys.Type:Constants.Types.Distance
+        Constants.Units.CentiMeter : [
+            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.CentiMeter,
+            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.CentiMeter,
+            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.CentiMeter,
+            Constants.Keys.UnitType:Constants.Types.Distance
         ],
         Constants.Units.Foot : [
             Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.Foot,
             Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.Foot,
             Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.Foot,
-            Constants.Keys.Type:Constants.Types.Distance
+            Constants.Keys.UnitType:Constants.Types.Distance
         ],
+        
+        //areas 
+        Constants.Units.SquareMeter : [
+            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.SquareMeter,
+            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.SquareMeter,
+            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.SquareMeter,
+            Constants.Keys.UnitType:Constants.Types.Area
+        ],
+        Constants.Units.SquareFoot : [
+            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.SquareFoot,
+            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.SquareFoot,
+            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.SquareFoot,
+            Constants.Keys.UnitType:Constants.Types.Area
+        ],
+        Constants.Units.Acre : [
+            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.Acre,
+            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.Acre,
+            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.Acre,
+            Constants.Keys.UnitType:Constants.Types.Area
+        ],
+
     
     ]
     
     static let defaultUnitsFromType = [
         Constants.Types.Distance:Constants.Units.Meter,
-        
-        ]
+        Constants.Types.Area:Constants.Units.SquareMeter,
+    ]
     
     static let unitsInType = [
         
         Constants.Types.Distance:[
             Constants.Units.Meter,
-            Constants.Units.CentMeter,
+            Constants.Units.CentiMeter,
             Constants.Units.Foot
         ],
         
+        Constants.Types.Area:[
+            Constants.Units.SquareMeter,
+            Constants.Units.SquareFoot,
+            Constants.Units.Acre
         ]
-    
-    static let unitsNameToShow = [
-        Constants.Units.Meter:Constants.UnitNameToShow.Meter,
-        Constants.Units.CentMeter:Constants.UnitNameToShow.CentMeter,
-        Constants.Units.Foot:Constants.UnitNameToShow.Foot
+        
     ]
     
-    static let unitsNameToShowShort = [
-        Constants.Units.Meter:Constants.UnitNameToShowShort.Meter,
-        Constants.Units.CentMeter:Constants.UnitNameToShowShort.CentMeter,
-        Constants.Units.Foot:Constants.UnitNameToShowShort.Foot
-    ]
-    
-    static let unitsNameToShowChinese = [
-        Constants.Units.Meter:Constants.UnitNameToShowChinese.Meter,
-        Constants.Units.CentMeter:Constants.UnitNameToShowChinese.CentMeter,
-        Constants.Units.Foot:Constants.UnitNameToShowChinese.Foot
-    ]
-    
+
     
 }

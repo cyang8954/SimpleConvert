@@ -9,7 +9,7 @@
 class Constants {
     
     struct Keys {
-        static let Type = "type"
+        static let UnitType = "type"
         static let Unit = "unit"
         static let UnitNameToShow = "unitNameToShow"
         static let UnitNameToShowShort = "unitNameToShowShort"
@@ -17,33 +17,56 @@ class Constants {
     }
     
     struct Types {
-        static let Distance = "distance"
-        static let Area = "area"
+        static let Distance = "Distance"
+        static let Area = "Area"
     }
     
     struct Units {
+        //distance
         static let Meter = "meter";
-        static let CentMeter = "centMeter";
+        static let CentiMeter = "centiMeter";
         static let Foot = "foot";
         
+        //area
+        static let SquareMeter = "squareMeter";
+        static let SquareFoot = "squareFoot";
+        static let Acre = "acre";
     }
     
     struct UnitNameToShow {
+        //distance
         static let Meter = "Meter";
-        static let CentMeter = "CentMeter";
+        static let CentiMeter = "CentiMeter";
         static let Foot = "Foot";
+        
+        //area
+        static let SquareMeter = "Square Meter";
+        static let SquareFoot = "Square Foot";
+        static let Acre = "Acre";
     }
     
     struct UnitNameToShowShort {
+        //distance
         static let Meter = "m";
-        static let CentMeter = "cm";
+        static let CentiMeter = "cm";
         static let Foot = "ft";
+        
+        //area
+        static let SquareMeter = "m²";
+        static let SquareFoot = "sq.ft";
+        static let Acre = "ac.";
     }
     
     struct UnitNameToShowChinese {
+        //distance
         static let Meter = "米";
-        static let CentMeter = "厘米";
+        static let CentiMeter = "厘米";
         static let Foot = "英尺";
+        
+        //area
+        static let SquareMeter = "平方米";
+        static let SquareFoot = "平方英尺";
+        static let Acre = "英亩";
     }
     
 }
