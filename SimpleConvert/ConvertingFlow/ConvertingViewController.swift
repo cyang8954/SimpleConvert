@@ -82,11 +82,18 @@ class ConvertingViewController: SCTableViewController {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let convertingHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: ConvertingHeaderID)
-    
+        let convertingHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: ConvertingHeaderID) as! ConvertingTextFieldHeader
+        
+        convertingHeader.textfield?.unitLabel?.text = "\((self.convertingItem?.nameToShowShort)!) (\((self.convertingItem?.nameInChinese)!))"
+        
+        return convertingHeader
         
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 76
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -26,7 +26,7 @@ class HomeViewController: SCTableViewController {
         
         let cmItem = ConvertItem(withUnit: Constants.Units.Acre, value: 0)
         
-        ConvertHandler.convert(fromDefault: defaultItem, convertingItem: cmItem)
+        ConvertHandler.convert(fromItem: defaultItem, convertingItem: cmItem)
         
         print (cmItem.value!)
         

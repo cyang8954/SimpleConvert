@@ -29,10 +29,13 @@ class ConvertingTextField: UIView {
             let textField = UITextField(frame: CGRect.zero)
             self.addSubview(textField)
             textField.translatesAutoresizingMaskIntoConstraints = false
+            textField.keyboardType = UIKeyboardType.decimalPad
             
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textField]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["textField":textField]))
             
             textField.font = UIFont.systemFont(ofSize: 15)
+            
+            textField.backgroundColor = UIColor.white
             
             self.textField = textField
             
@@ -48,6 +51,8 @@ class ConvertingTextField: UIView {
             self.unitLabel = unitLabel
             
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[textField]-6-[unitLabel]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["unitLabel":unitLabel,"textField":textField]))
+            
+            NSLayoutConstraint.init(item: textField, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 100).isActive = true
             
         }
 

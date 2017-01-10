@@ -25,6 +25,7 @@
 		B80146911E22AA7B00C8B816 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146901E22AA7B00C8B816 /* Constants.swift */; };
 		B80146931E22ACD200C8B816 /* Formula.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146921E22ACD200C8B816 /* Formula.swift */; };
 		B80146951E230E9B00C8B816 /* Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80146941E230E9B00C8B816 /* Mapping.swift */; };
+		B84265C81E248EAA003490D2 /* UIColorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84265C71E248EAA003490D2 /* UIColorExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B80146901E22AA7B00C8B816 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B80146921E22ACD200C8B816 /* Formula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formula.swift; sourceTree = "<group>"; };
 		B80146941E230E9B00C8B816 /* Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapping.swift; sourceTree = "<group>"; };
+		B84265C71E248EAA003490D2 /* UIColorExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		B80146731E22A14500C8B816 /* SimpleConvert */ = {
 			isa = PBXGroup;
 			children = (
+				B84265C61E248E58003490D2 /* Extentions */,
 				885CC2BA1E243F7900681C05 /* Views */,
 				885CC2AF1E241C9E00681C05 /* BaseClasses */,
 				885CC2AC1E24174F00681C05 /* ConvertingFlow */,
@@ -141,6 +144,14 @@
 				885CC2B41E24229E00681C05 /* Utility.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B84265C61E248E58003490D2 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				B84265C71E248EAA003490D2 /* UIColorExtentions.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B84265C81E248EAA003490D2 /* UIColorExtentions.swift in Sources */,
 				B801468A1E22A1E000C8B816 /* ConvertItem.swift in Sources */,
 				B80146931E22ACD200C8B816 /* Formula.swift in Sources */,
 				B801468C1E22A37500C8B816 /* ConvertHandler.swift in Sources */,

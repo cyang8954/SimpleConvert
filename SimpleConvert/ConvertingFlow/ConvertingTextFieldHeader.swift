@@ -34,6 +34,13 @@ class ConvertingTextFieldHeader: UITableViewHeaderFooterView {
             let chooseUnitButton = UIButton(frame: CGRect.zero)
             self.contentView.addSubview(chooseUnitButton)
             chooseUnitButton.translatesAutoresizingMaskIntoConstraints = false
+            chooseUnitButton.setTitle("Change Unit", for: UIControlState.normal)
+            chooseUnitButton.backgroundColor = UIColor.white
+            chooseUnitButton.contentEdgeInsets = UIEdgeInsets(top: 6, left:6 , bottom: 6, right: 6)
+            chooseUnitButton.layer.cornerRadius = 5
+            chooseUnitButton.layer.borderColor = UIColor(netHex:0x000033).cgColor
+            chooseUnitButton.setTitleColor(UIColor(netHex:0x000033), for:UIControlState.normal)
+            
             
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[chooseUnitButton]-20-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["chooseUnitButton":chooseUnitButton]))
             
