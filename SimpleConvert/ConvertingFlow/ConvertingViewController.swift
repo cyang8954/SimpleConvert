@@ -40,6 +40,8 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
             let convertItem = ConvertItem(withUnit: unit, value: 0)
             self.convertedItemList?.append(convertItem)
         }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.addButtonPressed(_:)))
     
         
     }
@@ -148,12 +150,25 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
     // MARK: navigations
     
     func chooseUnitButtonPressed(_ sender:UIButton) {
-        print("buttonPressed");
+        let chooseUnitController = ConvertingChooseUnitViewController()
+        chooseUnitController.isAddItem = false
+        chooseUnitController.type = self.convertingItem?.type
+        chooseUnitController.convertingController = self
+        self.present(chooseUnitController, animated: true, completion: nil)
     }
     
     func doneButtonPressed(_ sender:UIBarButtonItem) {
         self.convertTextField?.resignFirstResponder()
         self.convert()
+    }
+    
+    func addButtonPressed(_ sender:UIBarButtonSystemItem) {
+        let chooseUnitController = ConvertingChooseUnitViewController()
+        chooseUnitController.isAddItem = true
+        chooseUnitController.type = self.convertingItem?.type
+        chooseUnitController.exsitingItemList = self.convertedItemList
+        chooseUnitController.convertingController = self
+        self.present(chooseUnitController, animated: true, completion: nil)
     }
 
     func toolBarCancelButtonPressed(_ sender:UIBarButtonItem) {
@@ -282,6 +297,19 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         cellSnapshot.layer.shadowRadius = 5.0
         cellSnapshot.layer.shadowOpacity = 0.4
         return cellSnapshot
+    }
+    
+    func addConvertItem(_ convertItem:ConvertItem) {
+        self.convertedItemList?.insert(convertItem, at: 0)
+        self.convert()
+        let indexPath = NSIndexPath(item: 0, section: 0)
+        self.tableView.reloadRows(at:[indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+    }
+    
+    func replaceConvertedItem(_ convertItem:ConvertItem) {
+        self.convertingItem = convertItem
+        self.convert()
+        self.tableView.reloadData()
     }
     
 }

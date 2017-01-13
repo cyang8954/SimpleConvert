@@ -21,6 +21,10 @@ class SCViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        print ("\(self) deinit")
+    }
+    
 
     /*
     // MARK: - Navigation
