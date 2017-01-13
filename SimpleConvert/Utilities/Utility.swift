@@ -68,6 +68,8 @@ class Utility: NSObject {
         UserDefaults.standard.synchronize()
     }
     
+    // MARK: UI
+    
     class func addToolBar(toTextField textField:UITextField, buttonTitle:String, target:Any, action:Selector, cancelAction:Selector) {
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -85,4 +87,25 @@ class Utility: NSObject {
 
     }
     
+    class func showAlert(toViewController viewController:UIViewController, title:String, message:String, actions:Array<UIAlertAction>?) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style:  UIAlertActionStyle.default, handler: { (nil) in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+    
+        if actions != nil {
+            
+            for action in actions! {
+                alertController.addAction(action)
+            }
+        }
+        
+        alertController.addAction(okAction)
+    
+        
+        viewController.present(alertController, animated: true, completion: nil)
+
+    }
 }

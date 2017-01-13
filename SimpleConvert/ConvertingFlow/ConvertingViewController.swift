@@ -126,7 +126,7 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         
          if editingStyle == .delete {
             
-            if (self.convertedItemList.count > 0) {
+            if ((self.convertedItemList?.count)! > 1) {
             
                 let itemToRemove = (self.convertedItemList?[indexPath.row])! as ConvertItem
                 
@@ -137,6 +137,9 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
                 tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
             } else {
                 
+                Utility.showAlert(toViewController:self, title:"Removing Unit", message:"You should have at least one unit for converting", actions:nil)
+                
+                self.tableView.reloadRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.right)
             }
 
          }
