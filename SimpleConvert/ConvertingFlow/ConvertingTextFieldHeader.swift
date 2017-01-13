@@ -61,6 +61,12 @@ class ConvertingTextFieldHeader: UITableViewHeaderFooterView {
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[textfield]-20-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["textfield":textfield]))
             
             self.textfield = textfield
+            textfield.textField?.textAlignment = NSTextAlignment.right
+            
+            let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: 0))
+            textfield.textField?.rightView = spacerView
+            textfield.textField?.rightViewMode = UITextFieldViewMode.always
+            
         
             
         }

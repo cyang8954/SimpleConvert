@@ -11,7 +11,7 @@ import UIKit
 let ConvertCellID = "convertCell"
 let ConvertingHeaderID = "headerID"
 
-class ConvertingViewController: SCTableViewController {
+class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
     
     var type:String?
     var convertingItem:ConvertItem?
@@ -64,7 +64,7 @@ class ConvertingViewController: SCTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (self.unitListToShow?.count)!
+        return (self.convertedItemList?.count)!
     }
 
     
@@ -74,7 +74,9 @@ class ConvertingViewController: SCTableViewController {
         let convertItem = self.convertedItemList?[indexPath.row]
         
         cell.update(withConvertItem: convertItem!)
-
+    
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         return cell
     }
  
@@ -94,59 +96,66 @@ class ConvertingViewController: SCTableViewController {
         Utility.addToolBar(toTextField: (convertingHeader.textfield?.textField)!, buttonTitle: "Done", target: self, action: #selector(self.doneButtonPressed(_:)), cancelAction:#selector(self.toolBarCancelButtonPressed(_:)))
         
         self.convertTextField = convertingHeader.textfield?.textField
+        self.convertTextField?.delegate = self
+        self.convertTextField?.addTarget(self, action: #selector(self.textFieldDidChangeValue(_:)), for: UIControlEvents.editingChanged)
         
         return convertingHeader
         
     }
     
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 76
     }
-
-    /*
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.delete
+    }
+    
+    
     // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+ 
+    
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+         if editingStyle == .delete {
+            
+            if (self.convertedItemList.count > 0) {
+            
+                let itemToRemove = (self.convertedItemList?[indexPath.row])! as ConvertItem
+                
+                self.convertedItemList?.remove(at: indexPath.row)
+                
+                Utility.removeDefaultUnit(forType: (self.convertingItem?.type)!, unit: (itemToRemove.unit)!)
+                
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            } else {
+                
+            }
+
+         }
     }
-    */
+    
+//     // Override to support rearranging the table view.
+//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+//     
+//    }
+// 
+//    
+//    
+//     // Override to support conditional rearranging of the table view.
+//     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//     // Return false if you do not want the item to be re-orderable.
+//     return true
+//     }
+// 
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: navigations
     
@@ -155,6 +164,36 @@ class ConvertingViewController: SCTableViewController {
     }
     
     func doneButtonPressed(_ sender:UIBarButtonItem) {
+        self.convertTextField?.resignFirstResponder()
+        self.convert()
+    }
+
+    func toolBarCancelButtonPressed(_ sender:UIBarButtonItem) {
+        self.convertTextField?.text = nil;
+        self.convert()
+        self.convertTextField?.resignFirstResponder()
+    }
+    
+    
+    // MARK: textfield 
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (string == "."){
+            if ((textField.text?.contains("."))!){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    func textFieldDidChangeValue(_ textField: UITextField) {
+        self.convert()
+    }
+    
+    
+    // MARK: Helper
+    func convert() {
         let enteredString = (self.convertTextField?.text)!
         self.convertingItem?.value = (enteredString as NSString).doubleValue
         for itemToConvertTo in self.convertedItemList! {
@@ -162,9 +201,4 @@ class ConvertingViewController: SCTableViewController {
         }
         self.tableView.reloadData()
     }
-
-    func toolBarCancelButtonPressed(_ sender:UIBarButtonItem) {
-        self.convertTextField?.resignFirstResponder()
-    }
-    
 }

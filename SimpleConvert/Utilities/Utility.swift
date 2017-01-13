@@ -43,6 +43,22 @@ class Utility: NSObject {
         
     }
     
+    class func removeDefaultUnit(forType type:String, unit:String) {
+        var defaultUnitList = self.getDefaultUnitList(forType: type)
+        
+        var i = 0;
+        for aUnit in defaultUnitList! {
+            if aUnit == unit {
+                defaultUnitList?.remove(at: i)
+                self.setDefaultUnitList(forType:type, list:defaultUnitList!)
+                
+                return
+            }
+            
+            i = i + 1
+        }
+    }
+    
     class func setDefaultUnitList (forType type:String, list:Array<String>) {
         
         var unitsDefault = UserDefaults.standard.dictionary(forKey: Constants.Keys.UnitDefault)
