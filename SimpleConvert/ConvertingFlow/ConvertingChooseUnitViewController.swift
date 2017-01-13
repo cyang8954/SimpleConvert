@@ -9,9 +9,10 @@
 import UIKit
 
 
-class ConvertingChooseUnitViewController: SCTableViewController {
+class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDelegate {
 
     let ConvertCellID = "convertCell"
+    let HeaderID = "headerID"
     
     var type:String?
     var isAddItem:Bool?
@@ -29,34 +30,7 @@ class ConvertingChooseUnitViewController: SCTableViewController {
         self.title = self.type
         self.allUnitsInType = Mapping.unitsInType[type!]
         
-        self.convertedItemList = Array()
-        
-        var exsitingItemArrayString = Array<String>()
-        
-        if (self.exsitingItemList != nil) {
-        
-            for convertItem in self.exsitingItemList! {
-                exsitingItemArrayString.append(convertItem.unit!)
-            }
-        
-        }
-        
-        for unit in self.allUnitsInType! {
-            
-            var shouldAdd = true
-            
-            for string in exsitingItemArrayString {
-                
-                if string == unit {
-                    shouldAdd = false
-                }
-            }
-           
-            if (shouldAdd) {
-                let convertItem = ConvertItem(withUnit: unit, value: 0)
-                self.convertedItemList?.append(convertItem)
-            }
-        }
+        self.updateItemList(withSearchString: nil)
         
     }
     
@@ -64,6 +38,7 @@ class ConvertingChooseUnitViewController: SCTableViewController {
         super.viewDidLoad()
         
         self.tableView.register(ConvertingTableViewCell.classForCoder(), forCellReuseIdentifier: ConvertCellID)
+        self.tableView.register(UITableViewHeaderFooterView.classForCoder(), forHeaderFooterViewReuseIdentifier: HeaderID)
     }
     
     // MARK: - Table view data source
@@ -94,6 +69,57 @@ class ConvertingChooseUnitViewController: SCTableViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderID)
+        
+        let subViewSearchBar = header?.viewWithTag(-10)
+        
+        if (subViewSearchBar == nil) {
+            
+            let searchBar = UISearchBar()
+            searchBar.translatesAutoresizingMaskIntoConstraints = false
+            header?.addSubview(searchBar)
+            searchBar.tag = -10
+            
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[searchBar]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar ]))
+            
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[searchBar]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar ]))
+            
+            searchBar.delegate = self
+            
+            
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 50
+    }
+    
+    // MARK: search bar
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        var searchString:String
+        
+        if (text.characters.count > 0) {
+            searchString = searchBar.text! + text
+        } else {
+            let endIndex = searchBar.text?.index((searchBar.text?.endIndex)!, offsetBy: -1)
+            searchString = (searchBar.text?.substring(to: endIndex!))!
+        }
+            
+        self.updateItemList(withSearchString: searchString)
+        
+        self.tableView.reloadData()
+        
+        return true
+    }
+    
+    // MARK: navigation
+    
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         
         let convertItem = ConvertItem(withUnit: self.selectedUnit!, value: 0)
@@ -113,4 +139,53 @@ class ConvertingChooseUnitViewController: SCTableViewController {
         super.dismiss(animated: true, completion: completion)
     }
     
+    // MARk: helper
+    
+    func updateItemList(withSearchString searchString:String?) {
+        
+        self.convertedItemList = Array()
+        
+        var exsitingItemArrayString = Array<String>()
+        
+        if (self.exsitingItemList != nil) {
+            
+            for convertItem in self.exsitingItemList! {
+                
+                exsitingItemArrayString.append(convertItem.unit!)
+            }
+            
+        }
+        
+        for unit in self.allUnitsInType! {
+            
+            var shouldAdd = true
+            
+            for string in exsitingItemArrayString {
+                
+                if string == unit {
+                    shouldAdd = false
+                }
+                
+            }
+            
+            if (searchString != nil) {
+                
+                let convertItemToCompare = ConvertItem(withUnit: unit, value: 0)
+                
+                if convertItemToCompare.unit!.lowercased().contains(searchString!.lowercased()) == false
+                    && convertItemToCompare.nameToShow!.lowercased().contains(searchString!.lowercased()) == false
+                    && convertItemToCompare.nameToShowShort!.lowercased().contains(searchString!.lowercased()) == false
+                    && convertItemToCompare.nameInChinese!.lowercased().contains(searchString!.lowercased()) == false {
+                    shouldAdd = false
+                }
+                
+            }
+            
+            if (shouldAdd) {
+                let convertItem = ConvertItem(withUnit: unit, value: 0)
+                self.convertedItemList?.append(convertItem)
+            }
+        }
+
+    }
 }
