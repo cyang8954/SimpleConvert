@@ -38,8 +38,11 @@ class ConvertingTextFieldHeader: UITableViewHeaderFooterView {
             chooseUnitButton.backgroundColor = UIColor.white
             chooseUnitButton.contentEdgeInsets = UIEdgeInsets(top: 6, left:6 , bottom: 6, right: 6)
             chooseUnitButton.layer.cornerRadius = 5
-            chooseUnitButton.layer.borderColor = UIColor(netHex:0x000033).cgColor
-            chooseUnitButton.setTitleColor(UIColor(netHex:0x000033), for:UIControlState.normal)
+            chooseUnitButton.layer.borderColor = UIColor.blue.cgColor
+            chooseUnitButton.setTitleColor(UIColor.blue, for:UIControlState.normal)
+            chooseUnitButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
+            chooseUnitButton.backgroundColor = UIColor.clear
+            chooseUnitButton.layer.borderWidth = 1;
             
             
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[chooseUnitButton]-20-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["chooseUnitButton":chooseUnitButton]))
@@ -58,6 +61,7 @@ class ConvertingTextFieldHeader: UITableViewHeaderFooterView {
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[textfield]-20-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["textfield":textfield]))
             
             self.textfield = textfield
+        
             
         }
     }

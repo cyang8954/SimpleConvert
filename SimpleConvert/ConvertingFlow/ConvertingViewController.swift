@@ -20,6 +20,8 @@ class ConvertingViewController: SCTableViewController {
     var unitListToShow:Array<String>?
     
     var convertedItemList:Array<ConvertItem>?
+    
+    var convertTextField:UITextField?
 
     
     override func loadView() {
@@ -85,6 +87,13 @@ class ConvertingViewController: SCTableViewController {
         let convertingHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: ConvertingHeaderID) as! ConvertingTextFieldHeader
         
         convertingHeader.textfield?.unitLabel?.text = "\((self.convertingItem?.nameToShowShort)!) (\((self.convertingItem?.nameInChinese)!))"
+    
+        
+        convertingHeader.chooseUnitButton?.addTarget(self, action:#selector(self.chooseUnitButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        
+        Utility.addToolBar(toTextField: (convertingHeader.textfield?.textField)!, buttonTitle: "Done", target: self, action: #selector(self.doneButtonPressed(_:)), cancelAction:#selector(self.toolBarCancelButtonPressed(_:)))
+        
+        self.convertTextField = convertingHeader.textfield?.textField
         
         return convertingHeader
         
@@ -138,5 +147,24 @@ class ConvertingViewController: SCTableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: navigations
+    
+    func chooseUnitButtonPressed(_ sender:UIButton) {
+        print("buttonPressed");
+    }
+    
+    func doneButtonPressed(_ sender:UIBarButtonItem) {
+        let enteredString = (self.convertTextField?.text)!
+        self.convertingItem?.value = (enteredString as NSString).doubleValue
+        for itemToConvertTo in self.convertedItemList! {
+            ConvertHandler.convert(fromItem: self.convertingItem!, convertingItem: itemToConvertTo);
+        }
+        self.tableView.reloadData()
+    }
 
+    func toolBarCancelButtonPressed(_ sender:UIBarButtonItem) {
+        self.convertTextField?.resignFirstResponder()
+    }
+    
 }

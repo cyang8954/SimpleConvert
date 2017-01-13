@@ -52,4 +52,21 @@ class Utility: NSObject {
         UserDefaults.standard.synchronize()
     }
     
+    class func addToolBar(toTextField textField:UITextField, buttonTitle:String, target:Any, action:Selector, cancelAction:Selector) {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: target, action: action)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: target, action: cancelAction)
+
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        
+        textField.inputAccessoryView = toolBar
+
+    }
+    
 }
