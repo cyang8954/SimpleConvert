@@ -20,4 +20,8 @@ extension UIColor {
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
+    
+    class func appleBlue() -> UIColor {
+        return UIColor.init(colorLiteralRed: 0, green: 122/255, blue: 1.0, alpha: 1);
+    }
 }

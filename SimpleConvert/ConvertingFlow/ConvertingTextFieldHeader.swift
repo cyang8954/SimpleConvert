@@ -38,8 +38,8 @@ class ConvertingTextFieldHeader: UITableViewHeaderFooterView {
             chooseUnitButton.backgroundColor = UIColor.white
             chooseUnitButton.contentEdgeInsets = UIEdgeInsets(top: 6, left:6 , bottom: 6, right: 6)
             chooseUnitButton.layer.cornerRadius = 5
-            chooseUnitButton.layer.borderColor = UIColor.blue.cgColor
-            chooseUnitButton.setTitleColor(UIColor.blue, for:UIControlState.normal)
+            chooseUnitButton.layer.borderColor = UIColor.appleBlue().cgColor
+            chooseUnitButton.setTitleColor(UIColor.appleBlue(), for:UIControlState.normal)
             chooseUnitButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
             chooseUnitButton.backgroundColor = UIColor.clear
             chooseUnitButton.layer.borderWidth = 1;
