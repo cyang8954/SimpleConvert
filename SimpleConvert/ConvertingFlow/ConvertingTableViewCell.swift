@@ -70,5 +70,10 @@ class ConvertingTableViewCell: UITableViewCell {
         //only show 4 decimal 
         self.rightLabel?.text = "\((convertItem.value!*1000).rounded()/1000) \(convertItem.nameToShowShort!)"
     }
+    
+    public func updateWithOutValueLabel(withConvertItem convertItem:ConvertItem) {
+        self.leftLabel?.text = "\(convertItem.nameToShow!) (\(convertItem.nameInChinese!))"
+        self.rightLabel?.text = "\(convertItem.nameToShowShort!)"
+    }
 
 }

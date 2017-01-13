@@ -8,15 +8,15 @@
 
 import UIKit
 
-let ConvertCellID = "convertCell"
-let ConvertingHeaderID = "headerID"
 
 class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
+    
+    let ConvertCellID = "convertCell"
+    let ConvertingHeaderID = "headerID"
     
     var type:String?
     var convertingItem:ConvertItem?
     
-    var allUnitsInType:Array<String>?
     var unitListToShow:Array<String>?
     
     var convertedItemList:Array<ConvertItem>?
@@ -30,9 +30,6 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         self.title = self.type
         
         self.convertingItem = ConvertItem(withUnit: Mapping.defaultUnitsFromType[self.type!]!, value: 0)
-        
-        
-        self.allUnitsInType = Mapping.unitsInType[type!]
         
         self.unitListToShow = Utility.getDefaultUnitList(forType: self.type!)
         
