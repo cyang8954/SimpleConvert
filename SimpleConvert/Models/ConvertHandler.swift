@@ -34,7 +34,21 @@ class ConvertHandler: NSObject {
         convertingItem.value = defaultValue/Formula.unitToDefault[unit]!;
     }
     
+    class func switchItemValues(_ firstItem:ConvertItem, secondItem:ConvertItem) {
+        let middleItem = firstItem.copy() as! ConvertItem
+        self.copyItemValues(secondItem, toItem: firstItem)
+        self.copyItemValues(middleItem, toItem: secondItem)
+
+    }
     
+    class func copyItemValues(_ fromItem:ConvertItem, toItem:ConvertItem) {
+        toItem.value = fromItem.value
+        toItem.nameInChinese = fromItem.nameInChinese
+        toItem.type = fromItem.type
+        toItem.unit = fromItem.unit
+        toItem.nameToShow = fromItem.nameToShow
+        toItem.nameToShowShort = fromItem.nameToShowShort
+    }
     
 }
 

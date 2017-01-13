@@ -9,6 +9,7 @@
 import UIKit
 
 class ConvertItem: NSObject {
+    
     var type: String?
     var unit: String?
     
@@ -43,5 +44,10 @@ class ConvertItem: NSObject {
         self.nameToShowShort = convertDictionary[Constants.Keys.UnitNameToShowShort]
         self.nameInChinese = convertDictionary[Constants.Keys.UnitNameToShowChinese]
         
+    }
+    
+    override func copy() -> Any {
+        let copyItem = ConvertItem(withUnit: self.unit!, value: self.value!)
+        return copyItem
     }
 }
