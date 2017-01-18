@@ -90,7 +90,7 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
             
             let dismissButton = UIButton()
             dismissButton.translatesAutoresizingMaskIntoConstraints = false
-            dismissButton.addTarget(self, action:#selector(ConvertingChooseUnitViewController.dismiss(animated:completion:)), for: UIControlEvents.touchUpInside)
+            dismissButton.addTarget(self, action:#selector(self.dismissSelf), for: UIControlEvents.touchUpInside)
             header?.addSubview(dismissButton)
             
             dismissButton.setTitle("x", for: UIControlState.normal)
@@ -136,18 +136,21 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         
-        let convertItem = ConvertItem(withUnit: self.selectedUnit!, value: 0)
+        if (self.selectedUnit != nil) {
         
-        if (self.isAddItem!) {
+            let convertItem = ConvertItem(withUnit: self.selectedUnit!, value: 0)
             
-            //if add item is true, we add the item to converting controller,
-            self.convertingController?.addConvertItem(convertItem)
-            
-        } else {
-            
-            //else we replace the converted item
-            self.convertingController?.replaceConvertedItem(convertItem)
-            
+            if (self.isAddItem!) {
+                
+                //if add item is true, we add the item to converting controller,
+                self.convertingController?.addConvertItem(convertItem)
+                
+            } else {
+                
+                //else we replace the converted item
+                self.convertingController?.replaceConvertedItem(convertItem)
+                
+                }
         }
         
         super.dismiss(animated: true, completion: completion)
