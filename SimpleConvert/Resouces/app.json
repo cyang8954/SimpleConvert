@@ -1,0 +1,76 @@
+{
+    "unitMapping": {
+        "squareMeter": {
+            "unitNameToShowShort": "m\u00b2",
+            "unitNameToShowChinese": "\u5e73\u65b9\u7c73",
+            "unitNameToShow": "Square Meter",
+            "type": "Area"
+        },
+        "squareFoot": {
+            "unitNameToShowShort": "sq.ft",
+            "unitNameToShowChinese": "\u5e73\u65b9\u82f1\u5c3a",
+            "unitNameToShow": "Square Foot",
+            "type": "Area"
+        },
+        "acre": {
+            "unitNameToShowShort": "ac.",
+            "unitNameToShowChinese": "\u82f1\u4ea9",
+            "unitNameToShow": "Acre",
+            "type": "Area"
+        },
+        "meter": {
+            "unitNameToShowShort": "m",
+            "unitNameToShowChinese": "\u7c73",
+            "unitNameToShow": "Meter",
+            "type": "Distance"
+        },
+        "foot": {
+            "unitNameToShowShort": "ft",
+            "unitNameToShowChinese": "\u82f1\u5c3a",
+            "unitNameToShow": "Foot",
+            "type": "Distance"
+        },
+        "centMeter": {
+            "unitNameToShowShort": "cm",
+            "unitNameToShowChinese": "\u5398\u7c73",
+            "unitNameToShow": "CentMeter",
+            "type": "Distance"
+        }
+    },
+    "unitsInType": {
+        "Distance": [
+                     "meter",
+                     "centMeter",
+                     "foot"
+                     ],
+        "Area": [
+                 "squareMeter",
+                 "squareFoot",
+                 "acre"
+                 ]
+    },
+    "loadingUnitsForType": {
+        "Distance": [
+                     "meter",
+                     "centMeter",
+                     "foot"
+                     ],
+        "Area": [
+                 "squareMeter",
+                 "squareFoot",
+                 "acre"
+                 ]
+    },
+    "baseUnitForType": {
+        "Distance": "meter",
+        "Area": "squareMeter"
+    },
+    "unitToBaseFormula": {
+        "meter": 1,
+        "centMeter": 0.01,
+        "foot": 0.3048,
+        "squareMeter": 1,
+        "squareFoot": 0.092903,
+        "acre": 4046.86
+    }
+}

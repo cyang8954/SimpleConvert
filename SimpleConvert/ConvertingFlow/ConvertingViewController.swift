@@ -29,7 +29,7 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         
         self.title = self.type
         
-        self.convertingItem = ConvertItem(withUnit: Mapping.defaultUnitsFromType[self.type!]!, value: 0)
+        self.convertingItem = ConvertItem(withUnit: (Mapping.baseUnitForType?[self.type!]!)!, value: 0)
         
         self.unitListToShow = Utility.getDefaultUnitList(forType: self.type!)
         

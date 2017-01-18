@@ -17,19 +17,6 @@ class HomeViewController: SCTableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let testItemToConvert = ConvertItem(withUnit: Constants.Units.SquareFoot, value: 3000)
-        
-
-        let defaultItem = ConvertHandler.convertToDefault(testItemToConvert)
-        
-        print(defaultItem.value!)
-        
-        let cmItem = ConvertItem(withUnit: Constants.Units.Acre, value: 0)
-        
-        ConvertHandler.convert(fromItem: defaultItem, convertingItem: cmItem)
-        
-        print (cmItem.value!)
-        
         self.title = "Home"
         
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: TypeCellID)
@@ -42,14 +29,14 @@ class HomeViewController: SCTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return Array(Mapping.unitsInType.keys).count
+        return Array(Mapping.unitsInType!.keys).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: TypeCellID, for: indexPath)
         
-        let allTypeArray = Array(Mapping.unitsInType.keys)
+        let allTypeArray = Array((Mapping.unitsInType)!.keys)
     
         cell.textLabel!.text = allTypeArray[indexPath.row]
         
@@ -63,7 +50,7 @@ class HomeViewController: SCTableViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let allTypeArray = Array(Mapping.unitsInType.keys)
+        let allTypeArray = Array((Mapping.unitsInType)!.keys)
         
         let typeSelected = allTypeArray[indexPath.row]
         

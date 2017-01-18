@@ -37,12 +37,12 @@ class ConvertItem: NSObject {
     
     func initProperties(withUnit unit:String) {
         
-        let convertDictionary = Mapping.unitMapping[unit]!
+        let convertDictionary = Mapping.unitMapping?[unit]!
         
-        self.type = convertDictionary[Constants.Keys.UnitType];
-        self.nameToShow = convertDictionary[Constants.Keys.UnitNameToShow]
-        self.nameToShowShort = convertDictionary[Constants.Keys.UnitNameToShowShort]
-        self.nameInChinese = convertDictionary[Constants.Keys.UnitNameToShowChinese]
+        self.type = convertDictionary?[Constants.Keys.UnitType] ;
+        self.nameToShow = convertDictionary?[Constants.Keys.UnitNameToShow]
+        self.nameToShowShort = convertDictionary?[Constants.Keys.UnitNameToShowShort]
+        self.nameInChinese = convertDictionary?[Constants.Keys.UnitNameToShowChinese]
         
     }
     

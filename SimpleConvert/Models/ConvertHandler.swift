@@ -10,28 +10,28 @@ import UIKit
 
 class ConvertHandler: NSObject {
     
-    class func convertToDefault(_ itemToConvert:ConvertItem) -> ConvertItem {
+    class func convertToBase(_ itemToConvert:ConvertItem) -> ConvertItem {
         //find itemToConvert's default unit
         let type = itemToConvert.type!
-        let defaultUnit = Mapping.defaultUnitsFromType[type]!
+        let baseUnit = (Mapping.baseUnitForType?[type])!
         
-        let convertedDefaultValue = itemToConvert.value! * Formula.unitToDefault[itemToConvert.unit!]!
+        let convertedBaseValue = itemToConvert.value! * (Mapping.unitToBaseFormula?[itemToConvert.unit!])!
         
-        let unitMappingForDefaultUnit = Mapping.unitMapping[defaultUnit]!
+        let unitMappingForBaseUnit = Mapping.unitMapping![baseUnit]
         
-        let defaultItem = ConvertItem(withType: type, unit: defaultUnit, value: convertedDefaultValue, nameToShow: unitMappingForDefaultUnit[Constants.Keys.UnitNameToShow]!, nameToShowShort: unitMappingForDefaultUnit[Constants.Keys.UnitNameToShowShort]!, nameInChinese: unitMappingForDefaultUnit[Constants.Keys.UnitNameToShowChinese]!)
+        let baseItem = ConvertItem(withType: type, unit: baseUnit, value: convertedBaseValue, nameToShow: unitMappingForBaseUnit![Constants.Keys.UnitNameToShow]!, nameToShowShort: unitMappingForBaseUnit![Constants.Keys.UnitNameToShowShort]!, nameInChinese: unitMappingForBaseUnit![Constants.Keys.UnitNameToShowChinese]!)
         
-        return defaultItem
+        return baseItem
     }
     
     class func convert(fromItem item:ConvertItem, convertingItem:ConvertItem)  {
         
-        let defaultItem = self.convertToDefault(item)
+        let baseItem = self.convertToBase(item)
         
         let unit = convertingItem.unit!
-        let defaultValue = defaultItem.value!
+        let baseValue = baseItem.value!
         
-        convertingItem.value = defaultValue/Formula.unitToDefault[unit]!;
+        convertingItem.value = baseValue/(Mapping.unitToBaseFormula?[unit])!;
     }
     
     class func switchItemValues(_ firstItem:ConvertItem, secondItem:ConvertItem) {

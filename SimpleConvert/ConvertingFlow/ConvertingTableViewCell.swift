@@ -66,9 +66,25 @@ class ConvertingTableViewCell: UITableViewCell {
     }
     
     public func update(withConvertItem convertItem:ConvertItem) {
+        
+        let numberFormatter = NumberFormatter()
+        
+        numberFormatter.usesSignificantDigits = true
+        numberFormatter.minimumSignificantDigits = 1
+        numberFormatter.maximumSignificantDigits = 4
+        
+        if (convertItem.value! > 10000 || convertItem.value! < 0.0001) {
+            numberFormatter.numberStyle = NumberFormatter.Style.scientific
+        } else {
+            numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        }
+        
+        let numberFromString = numberFormatter.string(from: convertItem.value! as NSNumber)
+        
+        
         self.leftLabel?.text = "\(convertItem.nameToShow!) (\(convertItem.nameInChinese!))"
         //only show 4 decimal 
-        self.rightLabel?.text = "\((convertItem.value!*1000).rounded()/1000) \(convertItem.nameToShowShort!)"
+        self.rightLabel?.text = "\(numberFromString!) \(convertItem.nameToShowShort!)"
     }
     
     public func updateWithOutValueLabel(withConvertItem convertItem:ConvertItem) {

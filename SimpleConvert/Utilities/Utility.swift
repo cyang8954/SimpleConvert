@@ -33,7 +33,7 @@ class Utility: NSObject {
         } else {
             //set default with default units value
             
-            let defaultUnitsValue = Mapping.defaultUnitsInType[type]
+            let defaultUnitsValue = Mapping.loadingUnitsInType![type]
             
             setDefaultUnitList(forType: type, list: defaultUnitsValue!)
             
@@ -108,4 +108,32 @@ class Utility: NSObject {
         viewController.present(alertController, animated: true, completion: nil)
 
     }
+    
+    
+    class func getJson(fromFile file:String) -> NSDictionary? {
+        
+        if let path = Bundle.main.path(forResource:file, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                
+                let dictionary = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as? NSDictionary
+                
+                if dictionary != nil {
+                    print("jsonData:\(dictionary)")
+                    
+                    return dictionary;
+                } else {
+                    print("Could not get json from file, make sure that file contains valid json.")
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        } else {
+            print("Invalid filename/path.")
+        }
+        
+        return nil;
+    }
+    
+    
 }

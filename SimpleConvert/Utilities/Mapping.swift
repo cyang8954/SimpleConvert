@@ -10,88 +10,26 @@ import UIKit
 
 class Mapping: NSObject {
     
-    static let unitMapping = [
-        //distances
-        Constants.Units.Meter : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.Meter,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.Meter,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.Meter,
-            Constants.Keys.UnitType:Constants.Types.Distance
-        ],
-        Constants.Units.CentiMeter : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.CentiMeter,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.CentiMeter,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.CentiMeter,
-            Constants.Keys.UnitType:Constants.Types.Distance
-        ],
-        Constants.Units.Foot : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.Foot,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.Foot,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.Foot,
-            Constants.Keys.UnitType:Constants.Types.Distance
-        ],
-        
-        //areas 
-        Constants.Units.SquareMeter : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.SquareMeter,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.SquareMeter,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.SquareMeter,
-            Constants.Keys.UnitType:Constants.Types.Area
-        ],
-        Constants.Units.SquareFoot : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.SquareFoot,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.SquareFoot,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.SquareFoot,
-            Constants.Keys.UnitType:Constants.Types.Area
-        ],
-        Constants.Units.Acre : [
-            Constants.Keys.UnitNameToShow:Constants.UnitNameToShow.Acre,
-            Constants.Keys.UnitNameToShowShort:Constants.UnitNameToShowShort.Acre,
-            Constants.Keys.UnitNameToShowChinese:Constants.UnitNameToShowChinese.Acre,
-            Constants.Keys.UnitType:Constants.Types.Area
-        ],
-
+    static var unitMapping:[String:Dictionary<String, String>]?
     
-    ]
-    
-    static let defaultUnitsFromType = [
-        Constants.Types.Distance:Constants.Units.Meter,
-        Constants.Types.Area:Constants.Units.SquareMeter,
-    ]
-    
+    static var baseUnitForType:[String:String]?
     //all the units in a type
-    static let unitsInType = [
-        
-        Constants.Types.Distance:[
-            Constants.Units.Meter,
-            Constants.Units.CentiMeter,
-            Constants.Units.Foot
-        ],
-        
-        Constants.Types.Area:[
-            Constants.Units.SquareMeter,
-            Constants.Units.SquareFoot,
-            Constants.Units.Acre
-        ]
-        
-    ]
+    static var unitsInType:[String:Array<String>]?
     
     //default units in a type that showing when launch the fisrt time
-    static let defaultUnitsInType = [
-        
-        Constants.Types.Distance:[
-            Constants.Units.Meter,
-            Constants.Units.CentiMeter,
-            Constants.Units.Foot
-        ],
-        
-        Constants.Types.Area:[
-            Constants.Units.SquareMeter,
-            Constants.Units.SquareFoot,
-            Constants.Units.Acre
-        ]
-        
-    ]
+    static var loadingUnitsInType:[String:Array<String>]?
+    
+    static var unitToBaseFormula:[String:Double]?
 
+    class func initMappingFromJson(withFileName fileName:String) {
+        let json = Utility.getJson(fromFile: fileName)! as NSDictionary
+        
+        self.unitMapping = json[Constants.Keys.UnitMapping] as? [String:Dictionary]
+        self.baseUnitForType = json[Constants.Keys.BaseUnitForType] as? [String:String]
+        self.unitsInType = json[Constants.Keys.UnitsInType] as? [String:Array<String>]
+        self.loadingUnitsInType = json[Constants.Keys.LoadingUnitsForType] as? [String:Array]
+        self.unitToBaseFormula = json[Constants.Keys.UnitToBaseFormula] as? [String:Double]
+        
+    }
     
 }

@@ -28,7 +28,7 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
         super.loadView()
         
         self.title = self.type
-        self.allUnitsInType = Mapping.unitsInType[type!]
+        self.allUnitsInType = Mapping.unitsInType?[type!]
         
         self.updateItemList(withSearchString: nil)
         
@@ -39,6 +39,8 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
         
         self.tableView.register(ConvertingTableViewCell.classForCoder(), forCellReuseIdentifier: ConvertCellID)
         self.tableView.register(UITableViewHeaderFooterView.classForCoder(), forHeaderFooterViewReuseIdentifier: HeaderID)
+        
+        self.tableView.contentInset = UIEdgeInsetsMake(UIApplication.shared.statusBarFrame.height, 0, 0, 0)
     }
     
     // MARK: - Table view data source
@@ -81,11 +83,23 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
             header?.addSubview(searchBar)
             searchBar.tag = -10
             
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[searchBar]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar ]))
-            
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|[searchBar]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar ]))
             
             searchBar.delegate = self
+            
+            
+            let dismissButton = UIButton()
+            dismissButton.translatesAutoresizingMaskIntoConstraints = false
+            dismissButton.addTarget(self, action:#selector(ConvertingChooseUnitViewController.dismiss(animated:completion:)), for: UIControlEvents.touchUpInside)
+            header?.addSubview(dismissButton)
+            
+            dismissButton.setTitle("x", for: UIControlState.normal)
+            dismissButton.setTitleColor(UIColor.appleBlue(), for: UIControlState.normal)
+            dismissButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
+            
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[dismissButton(20)]-20-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["dismissButton":dismissButton]))
+            
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[dismissButton(20)]-6-[searchBar]-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar,"dismissButton":dismissButton]))
             
             
         }
@@ -95,7 +109,7 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 50
+        return 80
     }
     
     // MARK: search bar
