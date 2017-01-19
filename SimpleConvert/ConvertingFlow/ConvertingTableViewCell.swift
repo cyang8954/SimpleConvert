@@ -73,7 +73,7 @@ class ConvertingTableViewCell: UITableViewCell {
         numberFormatter.minimumSignificantDigits = 1
         numberFormatter.maximumSignificantDigits = 4
         
-        if (convertItem.value! > 10000 || convertItem.value! < 0.0001) {
+        if (convertItem.value! > 10000 || convertItem.value! < 0.0001) && convertItem.value != 0 {
             numberFormatter.numberStyle = NumberFormatter.Style.scientific
         } else {
             numberFormatter.numberStyle = NumberFormatter.Style.decimal

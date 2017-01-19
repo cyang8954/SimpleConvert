@@ -62,7 +62,7 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -304,6 +304,7 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         self.convert()
         let indexPath = NSIndexPath(item: 0, section: 0)
         self.tableView.reloadRows(at:[indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        Utility.addDefaultUnit(convertItem.unit!, type: convertItem.type!);
     }
     
     func replaceConvertedItem(_ convertItem:ConvertItem) {
