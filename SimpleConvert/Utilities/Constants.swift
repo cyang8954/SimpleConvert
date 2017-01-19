@@ -15,6 +15,7 @@ class Constants {
         static let UnitNameToShowShort = "unitNameToShowShort"
         static let UnitNameToShowChinese = "unitNameToShowChinese"
         static let UnitDefault = "unitDefault"
+        static let DefaultConvertingUnit = "defaultConvertingUnit"
         
         static let UnitMapping = "unitMapping"
         static let UnitsInType = "unitsInType"

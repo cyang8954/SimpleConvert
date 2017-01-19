@@ -10,12 +10,50 @@ import UIKit
 
 class Utility: NSObject {
     
+    // MARK: user default general
+    
     class func initDefaults(forKey key:String) {
         let unitDefaultDictionary = NSMutableDictionary()
         UserDefaults.standard.set(unitDefaultDictionary, forKey: key)
         
         UserDefaults.standard.synchronize()
+        
     }
+    
+    
+    // MARK: for default converting units
+    
+    class func getDefaultConvertingUnit(forType type:String) -> String {
+        var defaultConvertingUnitList = UserDefaults.standard.dictionary(forKey: Constants.Keys.DefaultConvertingUnit)
+        if (defaultConvertingUnitList == nil) {
+            initDefaults(forKey: Constants.Keys.DefaultConvertingUnit)
+        }
+        
+        let userSettingUnitToConvert = defaultConvertingUnitList?[type]
+        
+        if userSettingUnitToConvert != nil {
+            
+            return userSettingUnitToConvert as! String
+        } else {
+            
+            let defaultUserSettingValue = (Mapping.baseUnitForType?[type])!
+            setDefualtConvertingUnit(forType: type, unit: defaultUserSettingValue)
+            return defaultUserSettingValue
+        }
+        
+    }
+    
+    class func setDefualtConvertingUnit(forType type:String, unit:String) {
+        var unitsDefault = UserDefaults.standard.dictionary(forKey: Constants.Keys.DefaultConvertingUnit)
+        
+        unitsDefault?[type] = unit
+        UserDefaults.standard.set(unitsDefault, forKey: Constants.Keys.DefaultConvertingUnit)
+        UserDefaults.standard.synchronize()
+    }
+    
+    
+    
+    // MARK: for default units to convert to
     
     
     class func getDefaultUnitList(forType type:String) -> Array<String>? {
