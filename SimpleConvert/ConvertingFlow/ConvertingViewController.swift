@@ -156,7 +156,8 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         chooseUnitController.isAddItem = false
         chooseUnitController.type = self.convertingItem?.type
         chooseUnitController.convertingController = self
-        self.present(chooseUnitController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(chooseUnitController, animated: true)
+        ;
     }
     
     func doneButtonPressed(_ sender:UIBarButtonItem) {
@@ -170,7 +171,8 @@ class ConvertingViewController: SCTableViewController, UITextFieldDelegate {
         chooseUnitController.type = self.convertingItem?.type
         chooseUnitController.exsitingItemList = self.convertedItemList
         chooseUnitController.convertingController = self
-        self.present(chooseUnitController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(chooseUnitController, animated: true)
+        ;
     }
 
     func toolBarCancelButtonPressed(_ sender:UIBarButtonItem) {

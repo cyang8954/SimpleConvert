@@ -17,7 +17,7 @@ class SCTableViewController: SCViewController, UITableViewDelegate, UITableViewD
     override func loadView() {
         super.loadView()
         
-        let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.grouped)
+        let tableView = UITableView(frame: CGRect.zero, style: setupTableViewStyle())
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(tableView)
@@ -31,6 +31,10 @@ class SCTableViewController: SCViewController, UITableViewDelegate, UITableViewD
         
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellID)
         
+    }
+    
+    func setupTableViewStyle() -> UITableViewStyle {
+        return UITableViewStyle.grouped
     }
     
 //    override func viewDidLayoutSubviews() {

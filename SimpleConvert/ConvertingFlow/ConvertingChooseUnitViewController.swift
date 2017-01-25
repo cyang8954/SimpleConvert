@@ -68,7 +68,7 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedUnit = self.convertedItemList?[indexPath.row].unit!
-        self.dismiss(animated: true, completion: nil)
+        self.popSelf();
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -80,6 +80,7 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
             
             let searchBar = UISearchBar()
             searchBar.translatesAutoresizingMaskIntoConstraints = false
+            searchBar.searchBarStyle = UISearchBarStyle.prominent
             header?.addSubview(searchBar)
             searchBar.tag = -10
             
@@ -87,19 +88,7 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
             
             searchBar.delegate = self
             
-            
-            let dismissButton = UIButton()
-            dismissButton.translatesAutoresizingMaskIntoConstraints = false
-            dismissButton.addTarget(self, action:#selector(self.dismissSelf), for: UIControlEvents.touchUpInside)
-            header?.addSubview(dismissButton)
-            
-            dismissButton.setTitle("x", for: UIControlState.normal)
-            dismissButton.setTitleColor(UIColor.appleBlue(), for: UIControlState.normal)
-            dismissButton.setTitleColor(UIColor.lightGray, for: UIControlState.highlighted)
-            
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:[dismissButton(20)]-20-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["dismissButton":dismissButton]))
-            
-            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[dismissButton(20)]-6-[searchBar]-|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar,"dismissButton":dismissButton]))
+            NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|[searchBar]|", options: NSLayoutFormatOptions.directionLeadingToTrailing, metrics: nil, views: ["searchBar":searchBar]))
             
             
         }
@@ -134,10 +123,9 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
     
     // MARK: navigation
     
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        
+    func popSelf() {
         if (self.selectedUnit != nil) {
-        
+            
             let convertItem = ConvertItem(withUnit: self.selectedUnit!, value: 0)
             
             if (self.isAddItem!) {
@@ -150,10 +138,9 @@ class ConvertingChooseUnitViewController: SCTableViewController, UISearchBarDele
                 //else we replace the converted item
                 self.convertingController?.replaceConvertedItem(convertItem)
                 
-                }
+            }
         }
-        
-        super.dismiss(animated: true, completion: completion)
+        self.navigationController?.popViewController(animated: true);
     }
     
     // MARk: helper
